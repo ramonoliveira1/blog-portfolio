@@ -8,19 +8,25 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * return a list of all categories in Json response.
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return response()->json($categories);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * POST request to create a new category.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $name = $request['name'];
+        Category::create([
+            'name' => $name
+        ]);
+
+        return response()->json(['message' => 'Category created successfully']);
     }
 
     /**

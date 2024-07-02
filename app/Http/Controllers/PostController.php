@@ -3,24 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * return all posts in a json response.
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        $posts = Post::all();
+        return response()->json($posts);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
     }
 
     /**
